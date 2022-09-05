@@ -4,6 +4,7 @@ import polimorfismo.ave.Arara;
 import polimorfismo.ave.Ave;
 import polimorfismo.mamifero.Cachorro;
 import polimorfismo.mamifero.Canguru;
+import polimorfismo.mamifero.Lobo;
 import polimorfismo.mamifero.Mamifero;
 import polimorfismo.peixe.Goldfish;
 import polimorfismo.peixe.Peixe;
@@ -14,7 +15,7 @@ import polimorfismo.reptil.Tartaruga;
 public class Polimorfismo {
 
     public static void main(String[] args) {
-        // Animal animal = new Animal(); (CLASSE ABSTRATA!)
+        // Animal animal = new Animal(); (CLASSE ABSTRATA! Não da pra instanciar.)
 
         var ave = new Ave(); // HERDEIRA DA CLASSE ANIMAL
         ave.setPeso(0.89);
@@ -67,7 +68,26 @@ public class Polimorfismo {
 
         saltarLinha();
 
-        var cachorro = new Cachorro();  // HERDEIRA DA CLASSE MAMIFERO, DESCENDENTE DA CLASSE ANIMAL
+        var lobo = new Lobo();
+        lobo.setPeso(15.4);
+        System.out.println("Peso: " + lobo.getPeso());
+
+        lobo.setIdade(5);
+        System.out.println("Idade: " + lobo.getIdade());
+
+        lobo.setMembros(4);
+        System.out.println("Qtd de membros: " + lobo.getMembros());
+
+        lobo.setCorPelo("Cinza");
+        System.out.println("Cor do pelo: " + lobo.getCorPelo());
+
+        lobo.locomover();   // correndo
+        lobo.alimentar();   // mamando
+        lobo.emitirSom();   // auuuuu!
+
+        saltarLinha();
+
+        var cachorro = new Cachorro();  // HERDEIRA DA CLASSE LOBO, DESCENDENTE DA CLASSE ANIMAL
         cachorro.setPeso(3.94);
         System.out.println("Peso: " + cachorro.getPeso());
 
@@ -80,11 +100,22 @@ public class Polimorfismo {
         cachorro.setCorPelo("Caramelo");
         System.out.println("Cor do pelo: " + cachorro.getCorPelo());
 
-        cachorro.locomover();   // correndo
-        cachorro.alimentar();   // mamando
+        // SOBREPOSIÇÃO
+        cachorro.locomover();       // correndo
+        cachorro.alimentar();       // mamando
+        cachorro.emitirSom();       // au! au! au!
         cachorro.enterrarOsso();    // enterrando osso
         cachorro.abanarRabo();      // abanando rabo
-        cachorro.emitirSom();   // latindo
+
+        // SOBRECARGA: Várias maneiras de se chamar um método.
+        cachorro.reagir("Olá");            // abanar e latir
+        cachorro.reagir("Vai apanhar");    // rosnar
+        cachorro.reagir(11, 45);    // abanar
+        cachorro.reagir(21, 00);    // ignorar
+        cachorro.reagir(true);            // abanar
+        cachorro.reagir(false);           // rosnar e latir
+        cachorro.reagir(2, 12.5);   // latir
+        cachorro.reagir(17, 4.5);   // rosnar
 
         saltarLinha();
 

@@ -7,11 +7,12 @@ public abstract class Animal {
     protected int idade;
     protected int membros;
 
-    // Métodos de animal
+    // Métodos Abstratos
     public abstract void locomover();
     public abstract void alimentar();
     public abstract void emitirSom();
 
+    // Métodos
     public double getPeso() {
         return peso;
     }
